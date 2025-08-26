@@ -599,12 +599,6 @@ def score_signal_with_filters(rsi, macd, macd_signal, stoch_rsi, trend, signal, 
         signal_score += 1
         reasons.append("RSI 중립구간 (45~60) → 반등 기대 가점")
 
-    if price >= bollinger_upper:
-        signal_score -= 1
-        reasons.append("🔴 가격이 볼린저밴드 상단 돌파 ➔ 과매수 경계")
-    elif price <= bollinger_lower:
-        signal_score += 1
-        reasons.append("🟢 가격이 볼린저밴드 하단 터치 ➔ 반등 가능성↑")
 
     if pattern in ["LONG_BODY_BULL", "LONG_BODY_BEAR"]:
         signal_score += 2
@@ -1742,4 +1736,5 @@ def get_last_trade_time():
             return datetime.fromisoformat(f.read().strip())
     except:
         return None
+
 
