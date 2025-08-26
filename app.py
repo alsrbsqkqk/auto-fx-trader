@@ -705,14 +705,6 @@ def score_signal_with_filters(rsi, macd, macd_signal, stoch_rsi, trend, signal, 
             signal_score += 1
             reasons.append("Stoch RSI 과매도 + RSI 50 이하 → 약세 유지 SELL 가능")
         
-        if stoch_rsi < 0.1:
-            signal_score += 1
-            reasons.append("Stoch RSI 0.1 이하 → 극단적 과매도 가점")
-        
-        else:
-            reasons.append("Stoch RSI 과매도 → 저점 피로, 관망")
-    else:
-        reasons.append("Stoch RSI 중립")
 
     if trend == "UPTREND" and signal == "BUY":
         signal_score += 1
@@ -1750,3 +1742,4 @@ def get_last_trade_time():
             return datetime.fromisoformat(f.read().strip())
     except:
         return None
+
